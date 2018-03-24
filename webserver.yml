@@ -1,0 +1,12 @@
+--- #this script for webserver setup
+-host: webserver
+ user: test
+ sudo: yes
+ gather_facts: yes
+ tasks:
+ - name: install httpd package
+   yum: name=httpd state=installed
+ - name: copy index.html
+   yum: src=index.html state=/var/www/html/index.html
+ - name: start httpd service
+   yum : name=httpd state=started
